@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # booting up dependecy containers
-#docker-compose up -d
+docker-compose up -d
 
 # Build go program
 echo "building tests API ..."
