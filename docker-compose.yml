@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'testdb'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'root'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'test'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'test'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '33066:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
+    volumes:
+      - ./storage/mysql
+  consul:
+    container_name: test_consul
+    image: consul:latest
+    ports:
+      - 8500:8500
